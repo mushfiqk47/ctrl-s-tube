@@ -1,12 +1,29 @@
-# YouTube Downloader
+# Ctrl+S Tube
 
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PySide6](https://img.shields.io/badge/GUI-PySide6-green.svg)](https://pypi.org/project/PySide6/)
 
-A modern, user-friendly desktop application for downloading high-quality video and audio from YouTube with a clean Qt-based interface.
+A modern, user-friendly desktop application for downloading high-quality video and audio from YouTube with a clean Qt-based interface. Save YouTube content as easily as hitting Ctrl+S!
 
 ![YouTube Downloader](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)
+
+## 🌐 Two Versions Available
+
+**Choose your preferred platform:**
+
+1. **🖥️ Desktop Application (This README)**
+   - Full-featured Python app with PySide6 GUI
+   - Complete download functionality with yt-dlp and FFmpeg
+   - No limitations, works offline after setup
+   - Best for power users and bulk downloads
+
+2. **🌐 Chrome Extension** → [See chrome-extension/README.md](chrome-extension/README.md)
+   - Browser-integrated UI for quick access
+   - Auto-detects YouTube videos on current tab
+   - Adds download button directly to YouTube pages
+   - Requires backend service or desktop app for full downloads
+   - Perfect for casual, on-the-go downloads
 
 ## ✨ Features
 
@@ -52,7 +69,7 @@ Before running the application, ensure you have the following installed:
 
 ```bash
 # Navigate to project directory
-cd "path/to/Yt downloader_v7.0"
+cd "path/to/ctrl-s-tube"
 
 # Create virtual environment
 python -m venv venv
@@ -139,7 +156,7 @@ For detailed architecture documentation, see [ARCHITECTURE.md](ARCHITECTURE.md).
 ## 📂 Project Structure
 
 ```
-Yt downloader_v7.0/
+ctrl-s-tube/
 ├── core/                           # Core business logic
 │   ├── controller.py              # Main orchestrator with DI
 │   ├── router.py                  # URL platform identification
@@ -316,6 +333,9 @@ A: Currently, only YouTube is supported. Future versions may include additional 
 
 **Q: Where are downloads saved?**  
 A: You choose the save location when clicking download. The application doesn't have a default download folder.
+
+**Q: Why is it called Ctrl+S Tube?**  
+A: Because downloading YouTube videos should be as easy as saving a file (Ctrl+S)! Plus, it's a fun play on the keyboard shortcut we all know and love.
 
 **Q: Can I pause and resume downloads?**  
 A: Currently, downloads cannot be paused. This feature may be added in future versions.

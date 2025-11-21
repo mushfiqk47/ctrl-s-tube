@@ -1,6 +1,6 @@
-# Contributing to YouTube Downloader
+# Contributing to Ctrl+S Tube
 
-Thank you for considering contributing to YouTube Downloader! This document provides guidelines and instructions for contributing to the project.
+Thank you for considering contributing to Ctrl+S Tube! This document provides guidelines and instructions for contributing to the project.
 
 ## 📋 Table of Contents
 
@@ -49,12 +49,12 @@ We are committed to providing a welcoming and inclusive environment for all cont
 1. **Fork the repository** on GitHub
 2. **Clone your fork** locally:
    ```bash
-   git clone https://github.com/YOUR-USERNAME/yt-downloader.git
-   cd yt-downloader
+   git clone https://github.com/YOUR-USERNAME/ctrl-s-tube.git
+   cd ctrl-s-tube
    ```
 3. **Add upstream remote**:
    ```bash
-   git remote add upstream https://github.com/ORIGINAL-OWNER/yt-downloader.git
+   git remote add upstream https://github.com/ORIGINAL-OWNER/ctrl-s-tube.git
    ```
 
 ## 💻 Development Setup
@@ -479,4 +479,4 @@ By contributing, you agree that your contributions will be licensed under the MI
 
 ---
 
-Thank you for contributing to YouTube Downloader! 🎉
+Thank you for contributing to Ctrl+S Tube! 🎉

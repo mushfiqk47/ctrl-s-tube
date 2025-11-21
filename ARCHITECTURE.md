@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-This document provides a comprehensive overview of the YouTube Downloader application architecture, design patterns, and data flow.
+This document provides a comprehensive overview of the Ctrl+S Tube application architecture, design patterns, and data flow.
 
 ## 📑 Table of Contents
 
@@ -16,7 +16,7 @@ This document provides a comprehensive overview of the YouTube Downloader applic
 
 ## 🎯 Overview
 
-The YouTube Downloader is built using a **layered architecture** that separates concerns into distinct layers, promoting:
+Ctrl+S Tube is built using a **layered architecture** that separates concerns into distinct layers, promoting:
 
 - **Maintainability** - Each layer has clear responsibilities
 - **Testability** - Dependency injection enables unit testing
@@ -385,7 +385,7 @@ def get_logger(name: str) -> logging.Logger:
 class Config:
     WINDOW_WIDTH = 480
     WINDOW_HEIGHT = 600
-    WINDOW_TITLE = "YouTube Downloader"
+    WINDOW_TITLE = "Ctrl+S Tube"
 
 class Colors:
     BACKGROUND = "#0F0F0F"

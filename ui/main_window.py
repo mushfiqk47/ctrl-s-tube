@@ -91,6 +91,9 @@ class MainWindow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
 
+        # Set window icon FIRST, before other settings
+        self._set_window_icon()
+        
         self.setWindowTitle(Config.WINDOW_TITLE)
         self.resize(Config.WINDOW_WIDTH, Config.WINDOW_HEIGHT)
 
@@ -130,6 +133,21 @@ class MainWindow(QMainWindow):
         self.icon_video_dark = self._create_icon(Config.ICON_VIDEO_DARK)
         self.icon_audio_red = self._create_icon(Config.ICON_AUDIO_RED)
         self.icon_audio_dark = self._create_icon(Config.ICON_AUDIO_DARK)
+
+    def _set_window_icon(self) -> None:
+        """Set the window icon from icon128.ico file."""
+        # Try multiple possible locations
+        possible_paths = [
+            os.path.join(os.path.dirname(os.path.dirname(__file__)), "icon128.ico"),
+            os.path.join(os.getcwd(), "icon128.ico"),
+            os.path.join(os.path.dirname(__file__), "..", "icon128.ico"),
+        ]
+        
+        for icon_path in possible_paths:
+            if os.path.exists(icon_path):
+                icon = QIcon(icon_path)
+                self.setWindowIcon(icon)
+                return
 
     @staticmethod
     def _create_icon(path: str) -> Optional[QIcon]:

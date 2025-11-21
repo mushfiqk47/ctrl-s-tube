@@ -1,6 +1,6 @@
 # API Documentation
 
-Complete API reference for the YouTube Downloader application.
+Complete API reference for the Ctrl+S Tube application.
 
 ## 📑 Table of Contents
 
