@@ -1,6 +1,8 @@
 # Ctrl+S Tube
 
 ![Ctrl+S Tube Application](docs/images/screenshot.png)
+
+
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![PySide6](https://img.shields.io/badge/PySide6-6.7%2B-green)
