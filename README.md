@@ -1,6 +1,6 @@
 # CtrlSTube 📺⬇️
 
-![App Screenshot](./path/to/screenshot.png)
+![App Screenshot]("C:\Users\MUSHFIQ\Pictures\Screenshots\Screenshot 2025-11-22 141231.png")
 
 **CtrlSTube** is a powerful, modern, and user-friendly YouTube downloader application built with Python and PySide6. It offers a sleek graphical interface for downloading videos and audio from YouTube with support for high resolutions (up to 4K), batch processing, and automatic metadata fetching.
 
