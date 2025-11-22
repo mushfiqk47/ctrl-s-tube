@@ -1,0 +1,42 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ "main", "master", "desktop_app" ]
+  pull_request:
+    branches: [ "main", "master", "desktop_app" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
+          pip3 install --upgrade buildozer Cython virtualenv
+
+      - name: Prepare Build
+        run: |
+          # Rename main_kivy.py to main.py as expected by Buildozer
+          cp main_kivy.py main.py
+
+      - name: Build with Buildozer
+        run: |
+          # Run buildozer in debug mode
+          # yes | ... is to accept license agreements if prompted
+          yes | buildozer android debug
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: CtrlSTube-APK
+          path: bin/*.apk
