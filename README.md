@@ -6,23 +6,13 @@
 
 A modern, user-friendly desktop application for downloading high-quality video and audio from YouTube with a clean Qt-based interface. Save YouTube content as easily as hitting `Ctrl+S`!
 
-## 🌐 Two Versions Available
-Choose your preferred platform:
+
 
 ### 🖥️ Desktop Application (This README)
 - Full-featured Python app with PySide6 GUI
 - Complete download functionality with yt-dlp and FFmpeg
 - No limitations, works offline after setup
 - Best for power users and bulk downloads
-
-### 🌐 Chrome Extension → [See chrome-extension/README.md](chrome-extension/README.md)
-- Browser-integrated UI for quick access
-- Auto-detects YouTube videos on current tab
-- Adds download button directly to YouTube pages
-- Requires backend service or desktop app for full downloads
-- Perfect for casual, on-the-go downloads
-
-## ✨ Features
 
 ### 🎯 Core Functionality
 - **🎥 High-Quality Video Downloads** - Download videos in multiple resolutions (4K, 1440p, 1080p, 720p, 480p, 360p)
