@@ -49,3 +49,12 @@ downloads_history.json
 Thumbs.db
 .DS_Store
 *.tmp
+Ctrl+S Tube.exe
+website/index.html
+website/launch_app.bat
+website/README.md
+website/requirements.txt
+website/script.js
+website/server.py
+website/start_server.bat
+website/styles.css
