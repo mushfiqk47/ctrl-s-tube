@@ -54,7 +54,28 @@ We provide a comprehensive setup script to automate the process.
     ```cmd
     setup.bat
     ```
+    setup.bat
+    ```
     *This script will check for Python, create a virtual environment, install dependencies, and check for FFmpeg.*
+
+### Option 1.1: Automatic Setup (macOS/Linux)
+
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/mushfiqk47/ctrl-s-tube.git
+    cd ctrl-s-tube
+    ```
+
+2.  **Make scripts executable**:
+    ```bash
+    chmod +x setup.sh run.sh
+    ```
+
+3.  **Run the setup script**:
+    ```bash
+    ./setup.sh
+    ```
+    *This script will check for Python 3, create a virtual environment, install dependencies, and check for FFmpeg.*
 
 ### Option 2: Manual Installation
 
@@ -97,6 +118,12 @@ We provide a comprehensive setup script to automate the process.
 
 *   **Using the Batch Script (Windows)**:
     Double-click `run.bat` to launch the application.
+
+*   **Using the Shell Script (macOS/Linux)**:
+    Run the following command in your terminal:
+    ```bash
+    ./run.sh
+    ```
 
 *   **Using Python**:
     Ensure your virtual environment is activated, then run:
