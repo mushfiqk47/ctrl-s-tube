@@ -353,7 +353,7 @@ Validate and clean a YouTube URL.
 **Example:**
 
 ```python
-from utils.validators import URLValidator
+from app_utils.validators import URLValidator
 
 # Valid URL
 url = URLValidator.validate_youtube_url("https://www.youtube.com/watch?v=...")
@@ -413,7 +413,7 @@ Remove invalid characters from filenames.
 **Example:**
 
 ```python
-from utils.validators import PathValidator
+from app_utils.validators import PathValidator
 
 # Validate path
 path = PathValidator.validate_output_path("C:/Downloads")
@@ -450,7 +450,7 @@ Get a configured logger instance.
 **Example:**
 
 ```python
-from utils.logger import get_logger
+from app_utils.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -527,7 +527,7 @@ class Spacing:
 **Example:**
 
 ```python
-from utils.config import Colors, Fonts, Config
+from app_utils.config import Colors, Fonts, Config
 
 # Use in UI
 button.setStyleSheet(f"background-color: {Colors.ACCENT};")
@@ -599,7 +599,7 @@ Format bytes as human-readable string.
 **Example:**
 
 ```python
-from utils.progress_handler import ProgressHandler
+from app_utils.progress_handler import ProgressHandler
 
 percent = ProgressHandler.normalize_progress(50000000, 100000000)
 # Returns: 50.0
@@ -677,8 +677,7 @@ MediaDownloaderException (base)
 ├── InvalidURLException
 ├── FetchException
 ├── DownloadException
-├── FFmpegException
-└── SpotifyAuthException
+└── FFmpegException
 ```
 
 ### MediaDownloaderException
@@ -747,14 +746,7 @@ class FFmpegException(MediaDownloaderException):
 - Media processing fails
 - Encoding errors
 
-### SpotifyAuthException
 
-Raised when Spotify authentication fails (future use).
-
-```python
-class SpotifyAuthException(MediaDownloaderException):
-    """Raised when Spotify authentication fails."""
-```
 
 ---
 

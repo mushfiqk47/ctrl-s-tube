@@ -5,9 +5,9 @@ import os
 from typing import Optional
 from core.types import ProgressCallback
 from core.exceptions import DownloadException
-from utils.config import Config
-from utils.progress_handler import ProgressHandler
-from utils.logger import get_logger
+from app_utils.config import Config
+from app_utils.progress_handler import ProgressHandler
+from app_utils.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -35,6 +35,7 @@ class YouTubeDownloadService:
         url: str,
         output_path: str,
         quality: Optional[str] = None,
+        format: str = "mkv",
         progress_callback: Optional[ProgressCallback] = None
     ) -> str:
         """
@@ -44,6 +45,7 @@ class YouTubeDownloadService:
             url: YouTube URL
             output_path: Directory to save the video
             quality: Quality selection (e.g., "720p", "1080p", "Audio Only")
+            format: Output format ("mp4" or "mkv")
             progress_callback: Optional callback for progress updates
             
         Returns:
@@ -52,14 +54,14 @@ class YouTubeDownloadService:
         Raises:
             DownloadException: If download fails
         """
-        logger.info(f"Starting download: {url} to {output_path} with quality {quality}")
+        logger.info(f"Starting download: {url} to {output_path} with quality {quality} and format {format}")
         
         try:
             # Create output directory if it doesn't exist
             os.makedirs(output_path, exist_ok=True)
 
             # Build download options
-            ydl_opts = self._build_download_options(url, output_path, quality)
+            ydl_opts = self._build_download_options(url, output_path, quality, format)
             
             # Set up progress tracking
             if progress_callback:
@@ -79,7 +81,7 @@ class YouTubeDownloadService:
                     return result_path
                 else:
                     # Single video
-                    filename = self._get_output_filename(ydl, info, quality)
+                    filename = self._get_output_filename(ydl, info, quality, format)
                     logger.info(f"Video download complete: {filename}")
                     return filename
 
@@ -87,7 +89,7 @@ class YouTubeDownloadService:
             logger.error(f"YouTube download failed: {str(e)}", exc_info=True)
             raise DownloadException(f"YouTube download failed: {str(e)}")
     
-    def _build_download_options(self, url: str, output_path: str, quality: Optional[str]) -> dict:
+    def _build_download_options(self, url: str, output_path: str, quality: Optional[str], format: str = "mkv") -> dict:
         """
         Build yt-dlp download options.
         
@@ -95,6 +97,7 @@ class YouTubeDownloadService:
             url: YouTube URL
             output_path: Output directory
             quality: Quality selection
+            format: Output format ("mp4" or "mkv")
             
         Returns:
             Dictionary of yt-dlp options
@@ -126,8 +129,8 @@ class YouTubeDownloadService:
             # Video download
             format_string = self._parse_quality_to_format(quality)
             ydl_opts['format'] = format_string
-            ydl_opts['merge_output_format'] = 'mkv'
-            logger.debug(f"Configured for video download: {format_string}")
+            ydl_opts['merge_output_format'] = format
+            logger.debug(f"Configured for video download: {format_string} in {format}")
 
         return ydl_opts
     
@@ -168,7 +171,7 @@ class YouTubeDownloadService:
         
         return 'bestvideo+bestaudio/best'
     
-    def _get_output_filename(self, ydl: yt_dlp.YoutubeDL, info: dict, quality: Optional[str]) -> str:
+    def _get_output_filename(self, ydl: yt_dlp.YoutubeDL, info: dict, quality: Optional[str], format: str = "mkv") -> str:
         """
         Get the output filename for downloaded file.
         
@@ -176,6 +179,7 @@ class YouTubeDownloadService:
             ydl: YoutubeDL instance
             info: Video info dict
             quality: Quality selection
+            format: Output format
             
         Returns:
             Full path to output file
@@ -186,6 +190,6 @@ class YouTubeDownloadService:
         if quality == "Audio Only":
             filename = os.path.splitext(filename)[0] + '.mp3'
         else:
-            filename = os.path.splitext(filename)[0] + '.mkv'
+            filename = os.path.splitext(filename)[0] + f'.{format}'
         
         return filename

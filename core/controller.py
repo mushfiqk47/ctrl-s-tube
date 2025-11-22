@@ -6,8 +6,8 @@ from core.exceptions import InvalidURLException, FetchException, DownloadExcepti
 from core.types import VideoMetadata, ProgressCallback
 from services.youtube_metadata_service import YouTubeMetadataService
 from services.youtube_download_service import YouTubeDownloadService
-from utils.validators import URLValidator, PathValidator
-from utils.logger import get_logger
+from app_utils.validators import URLValidator, PathValidator
+from app_utils.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -75,6 +75,7 @@ class Controller:
         url: str,
         output_path: str,
         quality: Optional[str] = None,
+        format: str = "mkv",
         progress_callback: Optional[ProgressCallback] = None
     ) -> str:
         """
@@ -84,6 +85,7 @@ class Controller:
             url: YouTube URL
             output_path: Directory to save downloaded files
             quality: Quality selection (e.g., "720p", "Audio Only")
+            format: Output format ("mp4" or "mkv")
             progress_callback: Optional callback for progress updates (percent, status)
             
         Returns:
@@ -113,6 +115,7 @@ class Controller:
                 validated_url,
                 str(validated_path),
                 quality,
+                format,
                 progress_callback
             )
                 

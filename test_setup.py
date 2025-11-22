@@ -15,13 +15,13 @@ def test_imports():
         
         # Test services imports
         from services.youtube_service import YouTubeService
-        from services.spotify_service import SpotifyService
+
         from services.ffmpeg_processor import FFmpegProcessor
         print("✓ Services modules imported successfully")
         
         # Test utils imports
-        from utils.config import Colors, Fonts, Config
-        from utils.storage import Storage
+        from app_utils.config import Colors, Fonts, Config
+        from app_utils.storage import Storage
         print("✓ Utils modules imported successfully")
         
         # Test UI imports
@@ -46,11 +46,7 @@ def test_url_routing():
         assert platform == "youtube", f"Expected 'youtube', got '{platform}'"
         print(f"✓ YouTube URL correctly identified: {yt_url}")
         
-        # Test Spotify URLs
-        sp_url = "https://open.spotify.com/track/4cOdK2wGLETKBW3PvgPWqT"
-        platform = URLRouter.identify_platform(sp_url)
-        assert platform == "spotify", f"Expected 'spotify', got '{platform}'"
-        print(f"✓ Spotify URL correctly identified: {sp_url}")
+
         
         # Test invalid URL
         try:
@@ -70,7 +66,7 @@ def test_storage():
     print("\nTesting storage...")
     
     try:
-        from utils.storage import Storage
+        from app_utils.storage import Storage
         import os
         
         # Create test storage

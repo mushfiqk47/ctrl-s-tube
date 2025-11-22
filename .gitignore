@@ -50,6 +50,13 @@ Thumbs.db
 .DS_Store
 *.tmp
 Ctrl+S Tube.exe
+
+# Node.js (if ever used again)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Website files
 website/index.html
 website/launch_app.bat
 website/README.md

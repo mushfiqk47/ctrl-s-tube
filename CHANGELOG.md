@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planned
-- Spotify integration for music downloads
+
 - Download history and favorites tracking
 - Pause/resume functionality
 - Download queue management

@@ -256,7 +256,7 @@ def identify_platform(url: str) -> Platform:
     """Returns 'youtube' or raises InvalidURLException"""
 ```
 
-**Future extensibility**: Easy to add Spotify, Vimeo, etc.
+**Future extensibility**: Easy to add Vimeo, etc.
 
 #### Types (`types.py`)
 
@@ -282,18 +282,6 @@ class VideoMetadata(TypedDict):
 
 **Custom exception hierarchy**:
 
-```
-MediaDownloaderException (base)
-├── InvalidURLException
-├── FetchException
-├── DownloadException
-├── FFmpegException
-└── SpotifyAuthException
-```
-
-### Service Layer (`services/`)
-
-**Purpose**: Interact with external APIs and tools.
 
 #### YouTubeMetadataService (`youtube_metadata_service.py`)
 
@@ -564,21 +552,6 @@ except FetchException as e:
 
 ### Exception Hierarchy
 
-```python
-MediaDownloaderException         # Base - never raised directly
-├── InvalidURLException           # 400-style errors
-├── FetchException               # Metadata fetch failures
-├── DownloadException            # Download failures
-└── FFmpegException              # Processing failures
-```
-
-### Validation Before Execution
-
-```python
-# Validate early to fail fast
-def download(url, path, quality):
-    url = URLValidator.validate_youtube_url(url)      # Raises InvalidURLException
-    path = PathValidator.validate_output_path(path)   # Raises ValueError
     # ... proceed with download
 ```
 
@@ -665,7 +638,7 @@ def download(url, path, quality):
 ### Scalability
 
 The current architecture supports:
-- Adding new platforms (Spotify, Vimeo, etc.)
+- Adding new platforms (Vimeo, etc.)
 - Multiple UI implementations (CLI, Web)
 - Advanced features (scheduling, batch operations)
 
