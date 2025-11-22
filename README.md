@@ -263,9 +263,8 @@ The build script uses PyInstaller to create a standalone executable that include
 **Note:** The first time you run the executable, Windows SmartScreen may show a warning because the file is unsigned. Click "More info" → "Run anyway" for testing purposes.
 
 ### Cross-Platform Support
-- **Windows**: Use `build_exe.bat` to create `.exe`
-- **macOS/Linux**: Use `setup.sh` and `run.sh` for native Python execution
-- Future builds may include `.dmg` (macOS) and `.AppImage` (Linux) support
+- **Windows**: Download the `.exe` from Releases, or use `build_exe.bat` to build it manually.
+- **Linux**: Download the `.deb` package from Releases, or use `setup.sh` and `run.sh` for native Python execution.
 
 ## 🧪 Development
 
