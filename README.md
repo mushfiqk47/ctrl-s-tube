@@ -1,5 +1,5 @@
 # Ctrl+S Tube
-# Screenshort (./docs/images/screenshot.png)
+# Screenshort (docs/images/screenshot.png)
 
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
