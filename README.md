@@ -1,14 +1,11 @@
 # Ctrl+S Tube
-
-
-
-
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![PySide6](https://img.shields.io/badge/PySide6-6.7%2B-green)
 
 A modern, user-friendly desktop application for downloading high-quality video and audio from YouTube with a clean Qt-based interface. Save YouTube content as easily as hitting `Ctrl+S`!
 
+![Ctrl+S Tube Application](docs/images/screenshot.png)
 
 
 ### 🖥️ Desktop Application (This README)
