@@ -1,176 +1,96 @@
 # CtrlSTube 📺⬇️
 
-![App Screenshot](./screenshot.png)
+![App Screenshot](docs/images/screenshot.png)
 
-**CtrlSTube** is a powerful, modern, and user-friendly YouTube downloader application built with Python and PySide6. It offers a sleek graphical interface for downloading videos and audio from YouTube with support for high resolutions (up to 4K), batch processing, and automatic metadata fetching.
+**CtrlSTube** is a professional-grade YouTube downloader application built with Python and PySide6. It combines a sleek, modern interface with powerful backend processing to deliver high-quality video and audio downloads.
 
-Designed for simplicity and performance, CtrlSTube leverages the robust `yt-dlp` engine and `FFmpeg` to ensure high-quality downloads and conversions.
+Designed for both casual users and power users, CtrlSTube supports 4K video downloads, batch processing, and automatic metadata tagging, all wrapped in a responsive, dark-themed UI.
 
 ---
 
 ## ✨ Key Features
 
-*   **🎥 High-Quality Video Downloads**: Download videos in various resolutions including 4K (2160p), 2K (1440p), 1080p, 720p, and more.
-*   **🎵 Audio Extraction**: Easily convert and download videos as high-quality MP3 audio files with metadata tagging.
-*   **📦 Batch Processing**: Queue multiple videos or download entire playlists in one go.
-*   **🚀 Smart Auto-Fetch**: Automatically detects and fetches video metadata (title, thumbnail, duration) when you paste a URL.
-*   **🎨 Modern UI**: A clean, dark-themed interface built with PySide6, featuring responsive layouts and visual feedback.
-*   **🛠️ Standalone Executable**: Can be built into a portable `.exe` file for easy distribution without requiring Python installation.
-*   **⚡ FFmpeg Integration**: Uses FFmpeg for efficient format merging and conversion.
+*   **🎥 High-Fidelity Downloads**: Support for 4K (2160p), 2K (1440p), 1080p, and 60fps videos.
+*   **🎵 Smart Audio Extraction**: Convert videos to crystal-clear MP3s with automatic metadata (ID3 tags) and thumbnail embedding.
+*   **📦 Batch & Playlist Support**: Queue multiple videos or download entire playlists with a single click.
+*   **🚀 Intelligent Auto-Fetch**: Automatically detects clipboard URLs and fetches metadata instantly.
+*   **⚡ Optimized Performance**: Multi-threaded downloading engine powered by `yt-dlp` and `FFmpeg`.
+*   **🎨 Modern UX/UI**: A polished, responsive interface built with PySide6.
+*   **🛠️ Portable**: Available as a standalone `.exe` requiring no installation.
 
 ## 🛠️ Tech Stack
 
-*   **Language**: [Python 3.8+](https://www.python.org/)
-*   **GUI Framework**: [PySide6](https://pypi.org/project/PySide6/) (Qt for Python)
-*   **Core Engine**: [yt-dlp](https://github.com/yt-dlp/yt-dlp)
-*   **Media Processing**: [FFmpeg](https://ffmpeg.org/)
+*   **Core**: [Python 3.8+](https://www.python.org/)
+*   **GUI**: [PySide6](https://pypi.org/project/PySide6/) (Qt for Python)
+*   **Engine**: [yt-dlp](https://github.com/yt-dlp/yt-dlp)
+*   **Processing**: [FFmpeg](https://ffmpeg.org/)
 *   **Metadata**: [mutagen](https://pypi.org/project/mutagen/)
-*   **Environment**: [python-dotenv](https://pypi.org/project/python-dotenv/)
-*   **Testing**: [pytest](https://docs.pytest.org/)
 
-## 📋 Prerequisites
+## 🚀 Installation
 
-Before you begin, ensure you have the following installed on your machine:
+### Option 1: Standalone Executable (Windows)
+Download the latest release from the [Releases](https://github.com/mushfiqk47/ctrl-s-tube/releases) page and run `CtrlSTube.exe`. No Python installation required.
 
-1.  **Python 3.8 or higher**: [Download Python](https://www.python.org/downloads/)
-2.  **FFmpeg**: Required for video merging and audio conversion.
-    *   **Windows**: [Download FFmpeg](https://ffmpeg.org/download.html) and add it to your system PATH.
-    *   *Note: The `setup.bat` script checks for FFmpeg installation.*
+### Option 2: Run from Source
 
-## 🚀 Installation Guide
+#### Prerequisites
+- Python 3.8 or higher
+- [FFmpeg](https://ffmpeg.org/download.html) (Added to system PATH)
 
-### Option 1: Automatic Setup (Windows)
+#### Steps
 
-We provide a comprehensive setup script to automate the process.
-
-1.  **Clone the repository**:
+1.  **Clone the repository**
     ```bash
     git clone https://github.com/mushfiqk47/ctrl-s-tube.git
     cd ctrl-s-tube
     ```
 
-2.  **Run the setup script**:
-    Double-click `setup.bat` or run it from the terminal:
-    ```cmd
-    setup.bat
-    ```
-    setup.bat
-    ```
-    *This script will check for Python, create a virtual environment, install dependencies, and check for FFmpeg.*
+2.  **Run the setup script** (Automates venv creation and dependency installation)
+    *   **Windows**: Double-click `setup.bat`
+    *   **macOS/Linux**: Run `./setup.sh`
 
-### Option 1.1: Automatic Setup (macOS/Linux)
-
-1.  **Clone the repository**:
-    ```bash
-    git clone https://github.com/mushfiqk47/ctrl-s-tube.git
-    cd ctrl-s-tube
-    ```
-
-2.  **Make scripts executable**:
-    ```bash
-    chmod +x setup.sh run.sh
-    ```
-
-3.  **Run the setup script**:
-    ```bash
-    ./setup.sh
-    ```
-    *This script will check for Python 3, create a virtual environment, install dependencies, and check for FFmpeg.*
-
-### Option 2: Manual Installation
-
-1.  **Clone the repository**:
-    ```bash
-    git clone https://github.com/mushfiqk47/ctrl-s-tube.git
-    cd ctrl-s-tube
-    ```
-
-2.  **Create a virtual environment**:
-    ```bash
-    python -m venv venv
-    # Windows
-    venv\Scripts\activate
-    # macOS/Linux
-    source venv/bin/activate
-    ```
-
-3.  **Install dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
+3.  **Start the Application**
+    *   **Windows**: Double-click `run.bat`
+    *   **macOS/Linux**: Run `./run.sh`
 
 ## ⚙️ Configuration
 
-1.  **Environment Variables**:
-    Copy the example environment file to create your own `.env` file:
+CtrlSTube works out of the box, but you can customize it using environment variables.
+
+1.  Copy `.env.example` to `.env`:
     ```bash
     cp .env.example .env
-    # On Windows: copy .env.example .env
     ```
+2.  Edit `.env` to configure default download paths or API keys if needed.
 
-2.  **Edit `.env`**:
-    Open `.env` in a text editor.
-
-
-## 💻 Usage
-
-### Running the Application
-
-*   **Using the Batch Script (Windows)**:
-    Double-click `run.bat` to launch the application.
-
-*   **Using the Shell Script (macOS/Linux)**:
-    Run the following command in your terminal:
-    ```bash
-    ./run.sh
-    ```
-
-*   **Using Python**:
-    Ensure your virtual environment is activated, then run:
-    ```bash
-    python main.py
-    ```
-
-### Building the Executable
-
-To create a standalone `.exe` file that can run without Python:
-
-1.  Run the build script:
-    ```cmd
-    build_exe.bat
-    ```
-2.  Find the executable in the `dist/` folder (e.g., `dist/CtrlSTube.exe`).
-
-## 📂 Folder Structure
+## 📂 Project Structure
 
 ```text
 ctrl-s-tube/
-├── core/               # Core application logic and controllers
-├── services/           # Business logic (YouTube, FFmpeg services)
-├── ui/                 # GUI implementation (PySide6 windows & widgets)
-├── utils/              # Helper functions, config, and constants
+├── core/               # Application logic & controllers
+├── services/           # Business logic (YouTube, Download, FFmpeg)
+├── ui/                 # PySide6 GUI components
+├── utils/              # Helpers & configuration
+├── app_utils/          # Application-specific utilities
+├── docs/               # Documentation & assets
 ├── tests/              # Unit tests
-├── main.py             # Application entry point
-├── requirements.txt    # Python dependencies
-├── setup.bat           # Automated setup script
-├── run.bat             # Application launcher script
-├── build_exe.bat       # PyInstaller build script
-└── .env.example        # Environment variables template
+├── main.py             # Entry point
+└── requirements.txt    # Dependencies
 ```
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you have suggestions or find bugs, please open an issue or submit a pull request.
+Contributions are welcome! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
-1.  Fork the repository.
-2.  Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4.  Push to the branch (`git push origin feature/AmazingFeature`).
-5.  Open a Pull Request.
+1.  Fork the repo
+2.  Create your feature branch (`git checkout -b feature/amazing-feature`)
+3.  Commit your changes (`git commit -m 'Add amazing feature'`)
+4.  Push to the branch (`git push origin feature/amazing-feature`)
+5.  Open a Pull Request
 
 ## 📄 License
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 

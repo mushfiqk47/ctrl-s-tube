@@ -6,8 +6,8 @@ from core.exceptions import InvalidURLException, FetchException, DownloadExcepti
 from core.types import VideoMetadata, ProgressCallback
 from services.youtube_metadata_service import YouTubeMetadataService
 from services.youtube_download_service import YouTubeDownloadService
-from utils.validators import URLValidator, PathValidator
-from utils.logger import get_logger
+from app_utils.validators import URLValidator, PathValidator
+from app_utils.logger import get_logger
 
 logger = get_logger(__name__)
 

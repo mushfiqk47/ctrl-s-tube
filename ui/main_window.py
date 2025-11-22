@@ -31,8 +31,8 @@ from PySide6.QtWidgets import (
 )
 
 from core.controller import Controller
-from utils.config import Colors, Config, Fonts, Spacing
-from utils.batch_processor import extract_urls, validate_url_list, VideoItem, BatchProgress
+from app_utils.config import Colors, Config, Fonts, Spacing
+from app_utils.batch_processor import extract_urls, validate_url_list, VideoItem, BatchProgress
 
 
 class FetchWorker(QObject):

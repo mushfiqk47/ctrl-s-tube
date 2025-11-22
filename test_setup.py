@@ -20,8 +20,8 @@ def test_imports():
         print("✓ Services modules imported successfully")
         
         # Test utils imports
-        from utils.config import Colors, Fonts, Config
-        from utils.storage import Storage
+        from app_utils.config import Colors, Fonts, Config
+        from app_utils.storage import Storage
         print("✓ Utils modules imported successfully")
         
         # Test UI imports
@@ -66,7 +66,7 @@ def test_storage():
     print("\nTesting storage...")
     
     try:
-        from utils.storage import Storage
+        from app_utils.storage import Storage
         import os
         
         # Create test storage

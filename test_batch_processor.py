@@ -1,6 +1,6 @@
 """Quick test script for batch processor utilities."""
 
-from utils.batch_processor import extract_urls, validate_url_list, deduplicate_urls
+from app_utils.batch_processor import extract_urls, validate_url_list, deduplicate_urls
 
 # Test URL extraction
 test_text = """

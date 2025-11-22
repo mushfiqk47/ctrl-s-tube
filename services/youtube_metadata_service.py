@@ -4,8 +4,8 @@ import yt_dlp
 from typing import Union
 from core.types import VideoMetadata, FormatInfo
 from core.exceptions import FetchException
-from utils.config import Config
-from utils.logger import get_logger
+from app_utils.config import Config
+from app_utils.logger import get_logger
 
 logger = get_logger(__name__)
 

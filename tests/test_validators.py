@@ -2,7 +2,7 @@
 
 import pytest
 from pathlib import Path
-from utils.validators import URLValidator, PathValidator, QualityValidator
+from app_utils.validators import URLValidator, PathValidator, QualityValidator
 from core.exceptions import InvalidURLException
 
 

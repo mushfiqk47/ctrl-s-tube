@@ -26,6 +26,7 @@ venv.bak/
 # Logs
 logs/
 *.log
+logger_output.txt
 
 # Testing
 .pytest_cache/
@@ -35,12 +36,15 @@ htmlcov/
 .nox/
 coverage.xml
 *.cover
+test_results.txt
+test_output.txt
 
 # Build artifacts
 build/
 dist/
 *.egg-info/
 .eggs/
+*.spec
 
 # Downloads data
 downloads_history.json
@@ -50,3 +54,8 @@ Thumbs.db
 .DS_Store
 *.tmp
 *.exe
+
+# Node.js (if ever used again)
+node_modules/
+npm-debug.log
+yarn-error.log

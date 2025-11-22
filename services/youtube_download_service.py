@@ -5,9 +5,9 @@ import os
 from typing import Optional
 from core.types import ProgressCallback
 from core.exceptions import DownloadException
-from utils.config import Config
-from utils.progress_handler import ProgressHandler
-from utils.logger import get_logger
+from app_utils.config import Config
+from app_utils.progress_handler import ProgressHandler
+from app_utils.logger import get_logger
 
 logger = get_logger(__name__)
 
