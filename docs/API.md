@@ -475,7 +475,7 @@ Application configuration and design constants.
 class Config:
     WINDOW_WIDTH = 480
     WINDOW_HEIGHT = 600
-    WINDOW_TITLE = "YouTube Downloader"
+    WINDOW_TITLE = "Ctrl+S Tube"
     VERSION = "7.0.0"
 ```
 

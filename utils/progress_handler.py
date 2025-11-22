@@ -79,15 +79,27 @@ class ProgressHandler:
                 try:
                     downloaded = d.get('downloaded_bytes', 0)
                     total = d.get('total_bytes') or d.get('total_bytes_estimate', 0)
+                    speed = d.get('speed', 0)
+                    
                     if total > 0:
                         percent = (downloaded / total) * 100
+                        
+                        # Format speed
+                        speed_str = ""
+                        if speed:
+                            if speed > 1024 * 1024:  # MB/s
+                                speed_str = f" ({speed / (1024 * 1024):.1f} MB/s)"
+                            elif speed > 1024:  # KB/s
+                                speed_str = f" ({speed / 1024:.1f} KB/s)"
+                            else:  # B/s
+                                speed_str = f" ({speed:.0f} B/s)"
                         
                         # Add playlist info if available
                         info_prefix = ""
                         if 'playlist_index' in d and 'n_entries' in d:
                             info_prefix = f"[{d['playlist_index']}/{d['n_entries']}] "
                         
-                        self.update(percent, f"{info_prefix}Downloading...")
+                        self.update(percent, f"{info_prefix}Downloading...{speed_str}")
                 except Exception:
                     # Ignore progress calculation errors
                     pass

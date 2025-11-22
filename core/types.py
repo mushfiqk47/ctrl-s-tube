@@ -1,4 +1,4 @@
-"""Type definitions for the YouTube Downloader application."""
+"""Type definitions for the Ctrl+S Tube application."""
 
 from typing import TypedDict, Optional, Literal, Callable
 

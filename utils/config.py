@@ -109,7 +109,7 @@ class Config:
     """General application configuration."""
     
     # Window settings
-    WINDOW_TITLE = "YouTube Downloader"
+    WINDOW_TITLE = "CtrlSTube"
     WINDOW_WIDTH = 480  # Compact width
     WINDOW_HEIGHT = 600 # Compact height
 

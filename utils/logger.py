@@ -1,4 +1,4 @@
-"""Logging configuration for the YouTube Downloader application."""
+"""Logging configuration for the Ctrl+S Tube application."""
 
 import logging
 import sys
