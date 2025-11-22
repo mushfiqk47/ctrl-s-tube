@@ -677,8 +677,7 @@ MediaDownloaderException (base)
 ├── InvalidURLException
 ├── FetchException
 ├── DownloadException
-├── FFmpegException
-└── SpotifyAuthException
+└── FFmpegException
 ```
 
 ### MediaDownloaderException
@@ -747,14 +746,7 @@ class FFmpegException(MediaDownloaderException):
 - Media processing fails
 - Encoding errors
 
-### SpotifyAuthException
 
-Raised when Spotify authentication fails (future use).
-
-```python
-class SpotifyAuthException(MediaDownloaderException):
-    """Raised when Spotify authentication fails."""
-```
 
 ---
 

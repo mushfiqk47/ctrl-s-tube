@@ -26,6 +26,4 @@ class FFmpegException(MediaDownloaderException):
     pass
 
 
-class SpotifyAuthException(MediaDownloaderException):
-    """Raised when Spotify authentication fails."""
-    pass
+

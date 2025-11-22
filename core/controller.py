@@ -75,6 +75,7 @@ class Controller:
         url: str,
         output_path: str,
         quality: Optional[str] = None,
+        format: str = "mkv",
         progress_callback: Optional[ProgressCallback] = None
     ) -> str:
         """
@@ -84,6 +85,7 @@ class Controller:
             url: YouTube URL
             output_path: Directory to save downloaded files
             quality: Quality selection (e.g., "720p", "Audio Only")
+            format: Output format ("mp4" or "mkv")
             progress_callback: Optional callback for progress updates (percent, status)
             
         Returns:
@@ -113,6 +115,7 @@ class Controller:
                 validated_url,
                 str(validated_path),
                 quality,
+                format,
                 progress_callback
             )
                 

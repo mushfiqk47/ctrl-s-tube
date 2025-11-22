@@ -88,11 +88,8 @@ We provide a comprehensive setup script to automate the process.
     ```
 
 2.  **Edit `.env`**:
-    Open `.env` in a text editor. If you plan to use Spotify integration features (if enabled), add your credentials:
-    ```env
-    SPOTIPY_CLIENT_ID=your_spotify_client_id
-    SPOTIPY_CLIENT_SECRET=your_spotify_client_secret
-    ```
+    Open `.env` in a text editor.
+
 
 ## 💻 Usage
 

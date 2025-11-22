@@ -109,6 +109,7 @@ class Config:
     """General application configuration."""
     
     # Window settings
+    VERSION = "7.0.0"
     WINDOW_TITLE = "CtrlSTube"
     WINDOW_WIDTH = 480  # Compact width
     WINDOW_HEIGHT = 600 # Compact height
@@ -127,7 +128,3 @@ class Config:
     
     # Standard video heights
     STANDARD_VIDEO_HEIGHTS = {2160, 1440, 1080, 720, 480, 360, 240, 144}
-    
-    # Spotify credentials
-    SPOTIFY_CLIENT_ID = os.getenv('SPOTIPY_CLIENT_ID', '')
-    SPOTIFY_CLIENT_SECRET = os.getenv('SPOTIPY_CLIENT_SECRET', '')

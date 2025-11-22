@@ -68,12 +68,14 @@ class DownloadWorker(QObject):
         url: str,
         output_path: str,
         quality: Optional[str],
+        format: str = "mkv",
     ):
         super().__init__()
         self.controller = controller
         self.url = url
         self.output_path = output_path
         self.quality = quality
+        self.format = format
 
     def run(self) -> None:
         """Execute the download request."""
@@ -85,6 +87,7 @@ class DownloadWorker(QObject):
                 self.url,
                 self.output_path,
                 self.quality,
+                self.format,
                 progress_callback,
             )
             self.finished.emit(file_path)
@@ -137,12 +140,14 @@ class BatchDownloadWorker(QObject):
         video_items: List[VideoItem],
         output_path: str,
         quality: Optional[str],
+        format: str = "mkv",
     ):
         super().__init__()
         self.controller = controller
         self.video_items = video_items
         self.output_path = output_path
         self.quality = quality
+        self.format = format
         self.stopped = False
     
     def run(self) -> None:
@@ -150,6 +155,9 @@ class BatchDownloadWorker(QObject):
         for i, item in enumerate(self.video_items):
             if self.stopped:
                 break
+            
+            if item.status != "ready":
+                continue
             
             try:
                 def progress_callback(percent: float, status: str) -> None:
@@ -159,6 +167,7 @@ class BatchDownloadWorker(QObject):
                     item.url,
                     self.output_path,
                     self.quality,
+                    self.format,
                     progress_callback,
                 )
                 self.item_finished.emit(i, file_path)
@@ -366,7 +375,22 @@ class MainWindow(QMainWindow):
         self.quality_combo.setFont(self.font_body)
         self.quality_combo.setFixedHeight(Spacing.INPUT_HEIGHT)
         self.quality_combo.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.quality_combo.setCursor(Qt.CursorShape.PointingHandCursor)
         layout.addWidget(self.quality_combo)
+
+        layout.addSpacing(Spacing.SM)
+
+        # Format selector (MP4/MKV)
+        format_label = QLabel("Video Format")
+        format_label.setFont(self.font_h3)
+        layout.addWidget(format_label)
+
+        self.format_combo = QComboBox()
+        self.format_combo.addItems(["mkv", "mp4"])
+        self.format_combo.setFont(self.font_body)
+        self.format_combo.setFixedHeight(Spacing.INPUT_HEIGHT)
+        self.format_combo.setCursor(Qt.CursorShape.PointingHandCursor)
+        layout.addWidget(self.format_combo)
 
         layout.addStretch()
 
@@ -472,7 +496,22 @@ class MainWindow(QMainWindow):
         self.batch_quality_combo.setFont(self.font_body)
         self.batch_quality_combo.setFixedHeight(Spacing.INPUT_HEIGHT)
         self.batch_quality_combo.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.batch_quality_combo.setCursor(Qt.CursorShape.PointingHandCursor)
         layout.addWidget(self.batch_quality_combo)
+
+        layout.addSpacing(Spacing.SM)
+
+        # Batch Format selector
+        batch_format_label = QLabel("Video Format (for all videos)")
+        batch_format_label.setFont(self.font_h3)
+        layout.addWidget(batch_format_label)
+
+        self.batch_format_combo = QComboBox()
+        self.batch_format_combo.addItems(["mkv", "mp4"])
+        self.batch_format_combo.setFont(self.font_body)
+        self.batch_format_combo.setFixedHeight(Spacing.INPUT_HEIGHT)
+        self.batch_format_combo.setCursor(Qt.CursorShape.PointingHandCursor)
+        layout.addWidget(self.batch_format_combo)
 
         layout.addSpacing(Spacing.SM)
 
@@ -607,9 +646,11 @@ class MainWindow(QMainWindow):
         if self.download_type == "video":
             self._set_button_active(self.video_btn)
             self._set_button_inactive(self.audio_btn)
+            self.format_combo.setEnabled(True)
         else:
             self._set_button_active(self.audio_btn)
             self._set_button_inactive(self.video_btn)
+            self.format_combo.setEnabled(False)
 
     def _set_button_active(self, button: QPushButton) -> None:
         button.setStyleSheet(
@@ -740,6 +781,7 @@ class MainWindow(QMainWindow):
 
         url = self.url_input.text().strip()
         download_quality = self._determine_download_quality(selected_quality)
+        selected_format = self.format_combo.currentText()
         
         # Show download location
         self.file_location_label.setText(f"Downloading to: {output_path}")
@@ -749,7 +791,7 @@ class MainWindow(QMainWindow):
         self.download_btn.setEnabled(False)
 
         self.download_thread = QThread()
-        self.download_worker = DownloadWorker(self.controller, url, output_path, download_quality)
+        self.download_worker = DownloadWorker(self.controller, url, output_path, download_quality, selected_format)
         worker = self.download_worker
         worker.moveToThread(self.download_thread)
 
@@ -1009,15 +1051,17 @@ class MainWindow(QMainWindow):
         
         # Disable buttons
         self.add_to_queue_btn.setEnabled(False)
-        self.batch_download_btn.setEnabled(False)
+        quality = self.batch_quality_combo.currentText()
+        download_quality = self._determine_download_quality(quality)
+        selected_format = self.batch_format_combo.currentText()
         
-        # Start batch download
         self.batch_download_thread = QThread()
         self.batch_download_worker = BatchDownloadWorker(
             self.controller,
-            ready_items,
+            self.video_items,
             output_path,
-            download_quality
+            download_quality,
+            selected_format
         )
         worker = self.batch_download_worker
         worker.moveToThread(self.batch_download_thread)

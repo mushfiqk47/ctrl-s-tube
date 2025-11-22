@@ -15,7 +15,7 @@ def test_imports():
         
         # Test services imports
         from services.youtube_service import YouTubeService
-        from services.spotify_service import SpotifyService
+
         from services.ffmpeg_processor import FFmpegProcessor
         print("✓ Services modules imported successfully")
         
@@ -46,11 +46,7 @@ def test_url_routing():
         assert platform == "youtube", f"Expected 'youtube', got '{platform}'"
         print(f"✓ YouTube URL correctly identified: {yt_url}")
         
-        # Test Spotify URLs
-        sp_url = "https://open.spotify.com/track/4cOdK2wGLETKBW3PvgPWqT"
-        platform = URLRouter.identify_platform(sp_url)
-        assert platform == "spotify", f"Expected 'spotify', got '{platform}'"
-        print(f"✓ Spotify URL correctly identified: {sp_url}")
+
         
         # Test invalid URL
         try:
