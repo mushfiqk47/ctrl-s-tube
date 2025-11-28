@@ -874,7 +874,7 @@ class MainWindow(QMainWindow):
             quality_labels = []
             for fmt in formats:
                 label = fmt.get("label", fmt.get("quality", "Unknown"))
-                quality_labels.append(f"{label}.mkv")
+                quality_labels.append(f"{label}")
 
         self.quality_combo.clear()
         if quality_labels:
