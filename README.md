@@ -7,6 +7,43 @@ A modern, user-friendly desktop application for downloading high-quality video a
 
 ![Ctrl+S Tube Application](docs/images/screenshot.png)
 
+erDiagram
+    ORGANIZATIONS ||--o{ PROJECTS : "funds/manages"
+    AREAS ||--o{ OBSERVATIONS : "hosts"
+    SPECIES ||--o{ OBSERVATIONS : "recorded in"
+
+    ORGANIZATIONS {
+        int org_id PK
+        varchar org_name
+        varchar contact_email
+    }
+    PROJECTS {
+        int project_id PK
+        int org_id FK
+        varchar title
+        date start_date
+        decimal budget
+    }
+    AREAS {
+        int area_id PK
+        varchar name
+        varchar habitat_type
+        decimal size_sq_km
+    }
+    SPECIES {
+        int species_id PK
+        varchar common_name
+        varchar scientific_name
+        varchar conservation_status
+    }
+    OBSERVATIONS {
+        int obs_id PK
+        int area_id FK
+        int species_id FK
+        date obs_date
+        int population_count
+    }
+
 
 ### 🖥️ Desktop Application (This README)
 - Full-featured Python app with PySide6 GUI
